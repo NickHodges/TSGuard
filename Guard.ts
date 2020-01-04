@@ -52,7 +52,3 @@ export class Guard {
     }
   }
 }
-
-//Guard.checkTrue(false, 'This shit is working');
-//Guard.checkFalse(true, 'So does this shit');
-Guard.checkNotNullorUndefined(null, 'Yep, it is null, nothing, nada.');
