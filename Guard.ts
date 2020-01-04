@@ -1,6 +1,23 @@
-class EGuardError extends Error {}
-class EArgumentError extends EGuardError {}
-class EArgumentIsNullOrUndefinedError extends EGuardError {}
+class EGuardError extends Error {
+  constructor(m: string) {
+    super(m);
+    Object.setPrototypeOf(this, EGuardError.prototype);
+  }
+}
+
+class EArgumentError extends EGuardError {
+  constructor(m: string) {
+    super(m);
+    Object.setPrototypeOf(this, EArgumentError.prototype);
+  }
+}
+
+class EArgumentIsNullOrUndefinedError extends EGuardError {
+  constructor(m: string) {
+    super(m);
+    Object.setPrototypeOf(this, EArgumentIsNullOrUndefinedError.prototype);
+  }
+}
 
 export class Guard {
   // Private Methods
@@ -29,7 +46,7 @@ export class Guard {
     }
   }
 
-  public static checkNotNullorUndefined(aArgument: any, aMessage: string) {
+  public static checkNotNullorUndefined<T>(aArgument: T, aMessage: string) {
     if (!Guard.isDefined(aArgument)) {
       Guard.raiseArgumentIsNullOrUndefinedError(aMessage);
     }
@@ -38,4 +55,4 @@ export class Guard {
 
 //Guard.checkTrue(false, 'This shit is working');
 //Guard.checkFalse(true, 'So does this shit');
-//Guard.checkNotNullorUndefined(null, 'Yep, it is null, nothing, nada.');
+Guard.checkNotNullorUndefined(null, 'Yep, it is null, nothing, nada.');
