@@ -46,7 +46,7 @@ export class Guard {
     }
   }
 
-  public static checkNotNullorUndefined<T>(aArgument: T, aMessage: string) {
+  public static againstNullorUndefined<T>(aArgument: T, aMessage: string) {
     if (!Guard.isDefined(aArgument)) {
       Guard.raiseArgumentIsNullOrUndefinedError(aMessage);
     }
