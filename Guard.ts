@@ -63,16 +63,25 @@ export class Guard {
     }
   }
 
-  public static thatNumbersAreInRangeInclusive(value: number, min: number, max: number, aMessage: string) {
-    if ((value < min) && (value > max)) {
+  public static thatNumbersAreInRangeInclusive(
+    value: number,
+    min: number,
+    max: number,
+    aMessage: string
+  ) {
+    if (value < min || value > max) {
       Guard.raiseNumberIsOutOfRangeError(aMessage);
     }
   }
 
-  public static thatNumbersAreInRangeExclusive(value: number, min: number, max: number, aMessage: string) {
-    if ((value <= min) && (value >= max)) {
+  public static thatNumbersAreInRangeExclusive(
+    value: number,
+    min: number,
+    max: number,
+    aMessage: string
+  ) {
+    if (value <= min || value >= max) {
       Guard.raiseNumberIsOutOfRangeError(aMessage);
     }
   }
-
 }
